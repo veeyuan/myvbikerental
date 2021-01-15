@@ -399,7 +399,7 @@ a:hover.goUpButton {
 	padding-right:0px;
 }
 
-.row.selection label, #FullName label,  #YOB label,  #email label,  #comment label,  #test label , #phone label, label.col-sm-6.col-form-label{
+.row.selection label, #FullName label,  #SurName label, #YOB label,  #email label,  #comment label,  #test label , #phone label, label.col-sm-6.col-form-label{
 	text-align:left;
 	margin-bottom: 0px;
 	display: block;
@@ -467,11 +467,10 @@ input.form-control:focus, #messageZone textarea:focus {
 }
 
 
-#FullName, #YOB, #email, #phone, #comment, #comment{
+#FullName, #SurName, #YOB, #email, #phone, #comment, #comment{
 	margin: 15px 0px 5px 0px;
 	
 }
-
 
 .col-sm-6.comment{
 	padding: 15px 0px 15px 25px;
