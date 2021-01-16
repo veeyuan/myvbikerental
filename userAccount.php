@@ -1,3 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container .button {
+  position: absolute;
+  top: 61%;
+  left: 11%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #02aab0;
+  font-size: 16px;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .button:hover {
+  background-color: white;
+  color: black;
+}
+</style>
+</head>
+<body>
 <?php
 include("adHeader.php");
 
@@ -34,45 +69,10 @@ $rspatientappointment = mysqli_fetch_array($qsqlpatientappointment);
             </div>
         </div>
 
-        <div class="row clearfix">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home_animation_1"
-                            aria-expanded="true">Reservations History</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile_animation_1"
-                            aria-expanded="false">Reservation Records</a></li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content" style="padding: 10px">
-                    <div role="tabpanel" class="tab-pane animated flipInX active" id="home_animation_1"
-                        aria-expanded="true"> <b>Registration History</b>
-                        <h3>You are with us from <?php echo $rspatient[admissiondate]; ?>
-                            <?php echo $rspatient[admissiontime]; ?></h3>
-                    </div>
-                    <div role="tabpanel" class="tab-pane animated flipInX" id="profile_animation_1"
-                        aria-expanded="false"> <b>Appointment</b>
-                        <?php
-                        if(mysqli_num_rows($qsqlpatientappointment) == 0)
-                        {
-                            ?>
-                        <h3>Appointment records not found.. </h3>
-                        <?php
-                        }
-                        else
-                        {
-                            ?>
-                        <h3>Last Appointment taken on - <?php echo $rspatientappointment[appointmentdate]; ?>
-                            <?php echo $rspatientappointment[appointmenttime]; ?> </h3>
-                        <?php
-                        }
-                        ?>
-                    </div>
-
-                </div>
+            <div class="container">
+                <img src="imForSite\biking.png" alt="bike" style="width:970px;height:400px;">
+                <button class="button" onclick="document.location='reservation.php'">Reserve a bike</button>
             </div>
-        </div>
 
 
     </div>
@@ -81,3 +81,6 @@ $rspatientappointment = mysqli_fetch_array($qsqlpatientappointment);
 <?php
 include("adFooter.php");
 ?>
+
+</body>
+</html>
