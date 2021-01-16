@@ -24,10 +24,11 @@ $tim = date("H:i:s");
     <link href="assets/css/all-themes.css" rel="stylesheet" />
     <!-- Bootstrap Material Datetime Picker Css -->
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script> 
+
 </head>
 
-<body class="theme-green" style= "background-image: url('../../imForSite/road.jpg');">
-<div class = "theme-green divnav">
+<body class="theme-green">
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
@@ -36,7 +37,8 @@ $tim = date("H:i:s");
     <nav class="navbar clearHeader">
         <div class="col-12">
             <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand"
-                    href="index.html">MY V Bike Rental</a> </div>
+                    href="index.html">MY V Bike Rental</a> 
+                </div>                
             <ul class="nav navbar-nav navbar-right">
                 <!-- Notifications -->
                 <li>
@@ -46,7 +48,6 @@ $tim = date("H:i:s");
             </ul>
         </div>
     </nav>
-</div>
 
     <!-- #Top Bar -->
     <section>
