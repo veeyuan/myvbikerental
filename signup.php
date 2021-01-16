@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <?php
 error_reporting(0);
@@ -38,20 +37,19 @@ if(isset($_SESSION['userID']))
 $err='';
 if(isset($_POST['submit']))
 {	
-	$sql = "SELECT * FROM users WHERE username='$_POST[loginid]' AND password='$_POST[password]'";
-	$qsql = mysqli_query($connect,$sql);
-	if(mysqli_num_rows($qsql) == 1)
-	{
-		$rslogin = mysqli_fetch_array($qsql);
-		$_SESSION['userID']= $rslogin['userID'] ;		
-		echo "<script>window.location='userAccount.php';</script>";
-	}
-	else
-	{
-		$err = "<div class='alert alert-danger'>
-		<strong>Oh !</strong> Change a few things up and try submitting again.
-	</div>";
-	}
+    $sql ="INSERT INTO users(username,password,email,mobileNo,address) values('$_POST[loginid]','$_POST[password]','$_POST[email]','$_POST[mobileno]','$_POST[address]')";
+    if($qsql = mysqli_query($connect,$sql))
+    {
+
+        echo '<script>';
+        echo "alert(\"Signed up successfully! Please sign in now\")";
+        echo '</script>';					
+        echo "<meta http-equiv='refresh' content='0;url=login.php'>";
+    }
+    else
+    {
+        echo mysqli_error($connect);
+    }
 }
 		
 ?>
@@ -63,11 +61,11 @@ if(isset($_POST['submit']))
 ?></div>
     <div class="card-top"></div>
     <div class="card">
-        <h1 class="title"><span>MY V BIKE RENTAL</span>User Login</h1>
+        <h1 class="title"><span>MY V BIKE RENTAL</span>SIGN UP</h1>
         <div class="col-md-12">
 
     <form method="post" action="" name="frmadminlogin" id="sign_in" onSubmit="return validateform()">
-    <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
                     <div class="form-line">
 					<input type="text" name="loginid" id="loginid" class="form-control" placeholder="Username" /></div>
                 </div>
@@ -75,15 +73,26 @@ if(isset($_POST['submit']))
                     <div class="form-line">
 					<input type="password" name="password" id="password" class="form-control"  placeholder="Password" /> </div>
                 </div>
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-lock"></i> </span>
+                    <div class="form-line">
+					<input type="password" name="confirmedpassword" id="confirmedpassword" class="form-control"  placeholder="Confirmed Password" /> </div>
+                </div>                
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
+                    <div class="form-line">
+					<input type="email" name="email" id="email" class="form-control" placeholder="Email" /></div>
+                </div>     
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
+                    <div class="form-line">
+					<input type="number" name="mobileno" id="mobileno" class="form-control" placeholder="Mobile No" /></div>
+                </div>  
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
+                    <div class="form-line">
+					<input type="text" name="address" id="address" class="form-control" placeholder="Address" /></div>
+                </div>                                             
                 <div>
-                    <div class="">
-                        <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                        <label for="rememberme">Remember Me</label>
-                    </div>
                     <div class="text-center">
-					<input type="submit" name="submit" id="submit" value="Login" class="btn btn-raised waves-effect g-bg-gy" /></div>
-                    <div class="text-center"> <a href="forgot-password.html">Forgot Password?</a></div>
-					<div class="text-center"><a href="signup.php">Don't have an account? Sign up now</a></div>					
+					<input type="submit" name="submit" id="submit" value="Signup" class="btn btn-raised waves-effect g-bg-gy" /></div>
+                    <div class="text-center"> <a href="login.php">Already have an account? Sign in</a></div>				
                 </div>
             </form>
         </div>
@@ -111,7 +120,7 @@ function validateform()
 {
 	if(document.frmadminlogin.loginid.value == "")
 	{
-		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Please enter Password</div>";
+		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Please enter a username</div>";
 		document.frmadminlogin.loginid.focus();
 		return false;
 	}
@@ -123,7 +132,7 @@ function validateform()
 	}
 	else if(document.frmadminlogin.password.value == "")
 	{
-		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Should not be empty</div>";
+		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Password should not be empty</div>";
 		document.frmadminlogin.password.focus();
 		return false;
 	}
@@ -132,7 +141,31 @@ function validateform()
 		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Length should be 8</div>";
 		document.frmadminlogin.password.focus();
 		return false;
-	}
+    }
+	else if(document.frmadminlogin.password.value != document.frmadminlogin.confirmedpassword.value )
+	{
+		alert("Password and confirm password should be equal..");
+		document.frmadminlogin.password.focus();
+		return false;
+    }    
+	else if(document.frmadminlogin.email.value == "")
+	{
+		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Email should not be empty</div>";
+		document.frmadminlogin.email.focus();
+		return false;
+    }    
+	else if(document.frmadminlogin.mobileno.value == "")
+	{
+		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Mobile No. should not be empty</div>";
+		document.frmadminlogin.mobileno.focus();
+		return false;
+    }    
+	else if(document.frmadminlogin.address.value == "")
+	{
+		document.getElementById("err").innerHTML ="<div class='alert alert-info'><strong>Heads up!</strong> Address should not be empty</div>";
+		document.frmadminlogin.address.focus();
+		return false;
+	}     
 	else
 	{
 		return true;
