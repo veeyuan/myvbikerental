@@ -70,7 +70,7 @@ $rspatientappointment = mysqli_fetch_array($qsqlpatientappointment);
         </div>
 
             <div class="container">
-                <img src="imForSite\biking.png" alt="bike" style="width:970px;height:400px;">
+                <img src="imForSite\biking.png" alt="bike" style="width:960px;height:400px;">
                 <button class="button" onclick="document.location='reservation.php'">Reserve a bike</button>
             </div>
 
