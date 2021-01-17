@@ -37,7 +37,16 @@ if (isset($_POST['add']))
 			<link rel="stylesheet" type="text/css" href="reservation.css">
 			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-				
+			
+			
+			<!-- JQuery and JQuery UI -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+			<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+			
+			
+			
+			
 			<!--<iframe src="http://free.timeanddate.com/clock/i5fpvar2/n1446/tct/pct/ftb/tt0/tw0/tm1/ts1/tb4" frameborder="0" width="90" height="34" allowTransparency="true"></iframe>-->
 			<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">	
 		
@@ -149,7 +158,7 @@ if (isset($_POST['add']))
 								<div class="col-sm-9 dates">
 									<div class="col-sm-4" id="pick-up-date">
 										<label for="date-input" class="col-sm-3 col-form-label">Pick up date</label>
-										<input class="form-control" type="date" name="startDate" id="setDatePick" ><!--!!!!!!1��������� ������� ���������� ���!!!-->
+										<input class="form-control" type="text" name="startDate" id="setDatePick" ><!--!!!!!!1��������� ������� ���������� ���!!!-->
 									</div>
 									
 									<div class="col-sm-1">
@@ -163,6 +172,7 @@ if (isset($_POST['add']))
 		  
 									</div>
 								</div>	
+								
 							</div>
 						
 						
@@ -174,7 +184,7 @@ if (isset($_POST['add']))
 								<div class="col-sm-9 dates">
 									<div class="col-sm-4" id="drop-off-date">
 										<label for="date-input" class="col-sm-3 col-form-label">Drop off date</label>
-										<input class="form-control" type="date" name="endDate" id="setDateDrop">
+										<input class="form-control" type="text" name="endDate" id="setDateDrop">
 									</div>
 									
 									<div class="col-sm-1">
@@ -188,6 +198,46 @@ if (isset($_POST['add']))
 								
 								</div>	
 							</div>
+
+							<script>
+								$('#setDatePick').datepicker({ minDate: 0});
+								$('#setDateDrop').datepicker({ minDate: 0});
+
+								$('#setDateDrop').change(function () {
+									var diff = $('#setDatePick').datepicker("getDate") - $('#setDateDrop').datepicker("getDate");
+									$('#diff').text(diff / (1000 * 60 * 60 * 24) * -1 +1);
+								});
+							</script>
+
+							<div class="row" id="pricing">
+								<div class="col-sm-9" id="invisible">
+								</div>
+								
+								<div class="col-sm-3" 	>						
+									<label class="col-sm-12"><h4>Total Day(s)</h4></label>
+									<div class="col-sm-12 price"> 
+										<h4 id='diff'></h4>
+									</div>
+								</div>
+							</div>
+
+							<!-- <label class="col-sm-12"><h4>bike_id_text</h4></label>
+							<div class="col-sm-12 price"> 
+								<h4 id='bike_id_text'></h4>
+							</div> -->
+
+							<script>
+								// $('#bike_id').val();
+								// $('#bike_id_text').text($('#bike_id').val());
+								$('#bike_id_text').text($('#bike_id').val());
+								$('#bike_id').change(function () {
+									$('#bike_id_text').text($('#bike_id').val());
+								});
+
+
+
+
+							</script>
 						
 						
 							<div class="row" id="pricing">
@@ -195,10 +245,9 @@ if (isset($_POST['add']))
 								</div>
 								
 								<div class="col-sm-3" 	>						
-									<label class="col-sm-12"><h4>Final price</h4></label>
+									<label class="col-sm-12"><h4>Total Price (RM)</h4></label>
 									<div class="col-sm-12 price"> 
-										
-										<h4>50 $</h4>
+										<h4 id='total_price'></h4>
 									</div>
 								</div>
 							</div>
@@ -380,10 +429,10 @@ if (isset($_POST['add']))
 			</footer>
 				
 				
-				<script type='text/javascript' src='animation.js'></script>
+				<!-- <script type='text/javascript' src='animation.js'></script>
 				
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-			<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+			<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>  -->
 	</body>
 </html>
