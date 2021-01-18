@@ -62,17 +62,40 @@ if (!isset($_SESSION['adminID'])) {
     </div>
     <?php
         $rows = '';
-        $query = "SELECT * FROM reservations ORDER BY startDate";
+        $query = "SELECT SUM(totalPrice) AS totalPrice, MONTH(startDate) AS startDate FROM reservations GROUP BY MONTH(startDate)";
         $result = mysqli_query($connect,$query);
-        $total_rows =  $result->num_rows;
+        $total_rows =  $result->num_rows;         
+        // echo '<script>console.log('.$total_rows.')</script>';            
         if($result) 
         {
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        }
+            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);                        
+            echo '<script>console.log('.json_encode($rows).')</script>';            
+        }  
+        
+        
+        // $query = "SELECT SUM(totalPrice) AS total, startDate FROM reservations GROUP BY startDate";
+        // $result = mysqli_query($connect,$query);
+        // $chart_data = array(); //declare an array, not a string. This will become the outer array of the JSON.
+
+        // while($row = mysqli_fetch_array($result)) { 
+        //     //add a new item to the array
+        //     //each new item is an associative array with key-value pairs - this will become an object in the JSON
+        //     $chart_data [] = array(
+        //       "total" => $row["total"], 
+        //       "startDate" => $row["startDate"]
+        //     ); 
+        // } 
+      
+        // $json = json_encode($chart_data);  //encode the array into a valid JSON object
+        // echo '<script>console.log('.$json.')</script>';          
     ?>
     <div class="col-xs-12" id="morris-line-chart"></div>
     <div class="clear"></div>
-    <script>Morris.Line({
+    <script>
+     const monthNames = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    Morris.Line({
     // ID of the element in which to draw the chart.
     element: 'morris-line-chart',
 
@@ -88,11 +111,16 @@ if (!isset($_SESSION['adminID'])) {
 
     // Labels for the ykeys -- will be displayed when you hover over the
     // chart.
-    labels: ['Price'],
+    labels: ['TotalPrice'],
 
     lineColors: ['#0b62a4'],
-    xLabels: 'date',
 
+    xLabelFormat: function (x) {
+            var index = parseInt(x.src.startDate);
+            return monthNames[index];
+        },    
+    xLabels: 'date',
+    parseTime: false,
     // Disables line smoothing
     smooth: true,
     resize: true
