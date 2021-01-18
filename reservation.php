@@ -237,40 +237,100 @@ if (isset($_POST['add'])) {
 								<h4 id='bike_id_text'></h4>
 							</div> -->
 
+					<div id="result"></div>
+
 					<script>
-						// $('#bike_id').val();
+
 						// $('#bike_id_text').text($('#bike_id').val());
-						$('#bike_id_text').text($('#bike_id').val());
-						$('#bike_id').change(function() {
-							$('#bike_id_text').text($('#bike_id').val());
+						// $('#bike_id').change(function () {
+						// 	$('#bike_id_text').text($('#bike_id').val());
+						// });
+
+						var bikeID = $('#bike_id').val();
+						var diff = $('#diff').val();
+						$('#bike_id').change(function () {
+							var bikeID = $('#bike_id').val();
+							$.ajax({
+								url: 'reservationPrice.php',
+								type: 'POST',
+								data: {var1: bikeID, var2: diff},
+								success: function(data) {
+									console.log("success");
+									$('#price_per_unit').html(data);
+								}
+							});
 						});
+
+						$.ajax({
+							url: 'reservationPrice.php',
+							type: 'POST',
+							data: {var1: bikeID, var2: diff},
+							success: function(data) {
+								console.log("success");
+								$('#price_per_unit').html(data);
+							}
+						});
+
 					</script>
 
 
 					<div class="row" id="pricing">
 						<div class="col-sm-9" id="invisible">
 						</div>
+						
+						<div class="col-sm-3" 	>						
+							<label class="col-sm-12"><h4>Price Per Unit (RM)</h4></label>
+							<div class="col-sm-12 price"> 
+								<h4 id='price_per_unit'></h4>
+							</div>
+						</div>
+					</div>
 
-						<div class="col-sm-3">
-							<label class="col-sm-12">
-								<h4>Total Price (RM)</h4>
-							</label>
-							<div class="col-sm-12 price">
+					<script>
+						$('#diff').change(function () {
+							var diff = $('#diff').val();
+							var bikeID = $('#bike_id').val();
+							console.log(bikeID);
+							console.log(diff);
+							alert("hello");
+
+						});
+
+						document.getElementById("diff").addEventListener("change", function(){
+							//This input has changed
+							console.log('This Value is', this.value);
+						});
+						
+						
+						
+
+
+
+
+
+					</script>
+
+					<div class="row" id="pricing">
+						<div class="col-sm-9" id="invisible">
+						</div>
+						
+						<div class="col-sm-3" 	>						
+							<label class="col-sm-12"><h4>Total Price (RM)</h4></label>
+							<div class="col-sm-12 price"> 
 								<h4 id='total_price'></h4>
 							</div>
 						</div>
 					</div>
 
 
-					<div class="row col-sm-12 comment">
+					<div class="row col-sm-12 comment">	
 						<div class="row" id="comment">
 							<label for="message" class="col-sm-12 col-form-label" id="message"> Comments</label>
 							<div class="col-sm-12" id="messageZone">
-								<textarea class="form-control" name="Coments"></textarea>
+								<textarea class="form-control"  name="Coments" ></textarea>
 							</div>
 						</div>
-					</div>
-
+					</div>	
 
 
 					<div class="col-sm-12 checkbox">
