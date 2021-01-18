@@ -37,9 +37,15 @@ include("db.php");
 			$rspat = mysqli_fetch_array($qsqlpat);
 			
 			
-			$sqldept = "SELECT * FROM bikes WHERE ID='$rs[bikeID]'";
+			// $sqldept = "SELECT * FROM bikes WHERE ID='$rs[bikeID]'";
+			// $qsqldept = mysqli_query($connect,$sqldept);
+      //       $rsdept = mysqli_fetch_array($qsqldept);
+
+			$sqldept = "SELECT bikes.ID, models.ID, models.model, models.product_code FROM bikes 
+      INNER JOIN models ON bikes.ID = models.ID
+      WHERE bikes.ID='$rs[bikeID]'";
 			$qsqldept = mysqli_query($connect,$sqldept);
-            $rsdept = mysqli_fetch_array($qsqldept);
+      $rsdept = mysqli_fetch_array($qsqldept);       
             
 			$sqlstat = "SELECT * FROM status WHERE statusID='$rs[status]'";
 			$qsqlstat= mysqli_query($connect,$sqlstat);
@@ -49,7 +55,7 @@ include("db.php");
             <td>&nbsp;$rspat[username]<br>&nbsp;$rspat[email]</td>	 
              <td>&nbsp;" . date("d-M-Y",strtotime($rs['startDate'])) . " <br>" . date("H:i A",strtotime($rs['startTime'])) . "</td> 
 			 <td>&nbsp;" . date("d-M-Y",strtotime($rs['endDate'])) . "<br> " . date("H:i A",strtotime($rs['endTime'])) . "</td>              
-		    <td>&nbsp;$rsdept[Model]</td>
+		    <td>&nbsp;$rsdept[model]</td>
                 <td>&nbsp;$rs[totalPrice]</td>
                 <td>&nbsp;$rsstat[statusDescription]</td>
                 <td><div align='center'>";
