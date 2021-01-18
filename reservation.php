@@ -1,28 +1,33 @@
 <?php
-include_once("db.php");
-include("db.php");
+session_start();
 
-if (isset($_POST['add'])) {
-
-	$userID  = $_SESSION['user'];
-	$bikeID  = strip_tags(trim($_POST['bikeID']));
-
-	$startDate  = strip_tags(trim($_POST['startDate']));
-	$endtDate  = strip_tags(trim($_POST['endtDate']));
-	$startTime	= strip_tags(trim($_POST['startTime']));
-	$endTime    = strip_tags(trim($_POST['endTime']));
-	$totalPrice	= strip_tags(trim($_POST['totalPrice']));
-	$comments    = strip_tags(trim($_POST['comments']));
-
-	$mysqli = new mysqli("localhost", "root", "", "bikerentalsystem");
-
-	$mysqli->query("INSERT INTO reservations(userID,bikeID,startDate,endDate,startTime,endTime,totalPrice,Comments) 
-                VALUES ('$userID','$bikeID','$startDate','$endDate','$startTime','$endTime','$totalPrice','$Comments')");
-
-	$mysqli->close();
-
-	//$result='<div class="alert alert-success"><h3><span class="glyphicon glyphicon-ok"></span> Order complete!</h3><h4>We will get in touch with you soon.</h4></div>';
+?>
+<?php
+include_once("db.php");                                     
+$result='';
+if (isset($_POST['add']))                                   
+{
+if(!isset($_SESSION['userID']))
+{
+	echo '<script type="text/javascript">alert("You have to sign in to make reservation")</script>';
 }
+else{
+	$userID  = $_SESSION['userID'];
+	$bikeID  = strip_tags(trim($_POST['bike']));
+    $startDate  = strip_tags(trim($_POST['startDate']));
+    $endtDate  = strip_tags(trim($_POST['endDate']));
+	$startTime	= strip_tags(trim($_POST['startTime']));
+    $endTime    = strip_tags(trim($_POST['endTime']));
+	//$totalPrice	= strip_tags(trim($_POST['totalPrice']));
+    $comments    = strip_tags(trim($_POST['Coments']));
+
+	$sql = "INSERT INTO reservations(userID,bikeID,startDate,endDate,startTime,endTime,totalPrice,Comments, status) 
+                VALUES ('$userID','$bikeID','$startDate','$endtDate','$startTime','$endTime','90','$comments', '3')";
+	$qsql = mysqli_query($connect,$sql);
+	  
+    
+    $result='<div class="alert alert-success"><h3><span class="glyphicon glyphicon-ok"></span> Order complete!</h3><h4>We will get in touch with you soon.</h4></div>';
+}}
 ?>
 
 <!DOCTYPE html>
@@ -287,18 +292,22 @@ if (isset($_POST['add'])) {
 					</div>
 
 					<script>
-						$('#diff').change(function () {
-							var diff = $('#diff').val();
-							var bikeID = $('#bike_id').val();
-							console.log(bikeID);
-							console.log(diff);
-							alert("hello");
+						
 
-						});
+						$('body').on('DOMSubtreeModified', '#diff', function(){
+							console.log('changed');
+							
+							var diff = $('#setDatePick').datepicker("getDate") - $('#setDateDrop').datepicker("getDate");
+							var diff2 = diff / (1000 * 60 * 60 * 24) * -1 + 1;
+							
+							// var diff = $('#diff').val();
+							var price_per_unit = $('#price_per_unit').html(data);
+							var total_price = diff2 * price_per_unit;
+							$('#total_price').text(total_price);
 
-						document.getElementById("diff").addEventListener("change", function(){
-							//This input has changed
-							console.log('This Value is', this.value);
+							console.log(diff2);
+							console.log(price_per_unit);
+							console.log(total_price);
 						});
 						
 						
