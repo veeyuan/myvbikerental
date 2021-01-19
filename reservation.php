@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <?php
 include_once("db.php");                                     
@@ -20,7 +19,6 @@ else{
     $endTime    = strip_tags(trim($_POST['endTime']));
 	//$totalPrice	= strip_tags(trim($_POST['totalPrice']));
     $comments    = strip_tags(trim($_POST['Coments']));
-
 	$sql = "INSERT INTO reservations(userID,bikeID,startDate,endDate,startTime,endTime,totalPrice,Comments, status) 
                 VALUES ('$userID','$bikeID','$startDate','$endtDate','$startTime','$endTime','90','$comments', '3')";
 	$qsql = mysqli_query($connect,$sql);
@@ -29,10 +27,8 @@ else{
     $result='<div class="alert alert-success"><h3><span class="glyphicon glyphicon-ok"></span> Order complete!</h3><h4>We will get in touch with you soon.</h4></div>';
 }}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title>MY V Bike Rental</title>
 	<meta charset="utf-8" />
@@ -42,19 +38,12 @@ else{
 	<link rel="stylesheet" type="text/css" href="reservation.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-
 	<!-- JQuery and JQuery UI -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-
-
-
 	<!--<iframe src="http://free.timeanddate.com/clock/i5fpvar2/n1446/tct/pct/ftb/tt0/tw0/tm1/ts1/tb4" frameborder="0" width="90" height="34" allowTransparency="true"></iframe>-->
 	<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-
 	<!--[if lt IE 9]>
 			<script type="text/javascript">alert("Your browser does not support the canvas tag.");</script>
 			<![endif]-->
@@ -66,20 +55,15 @@ else{
 		}
 	</script>
 </head>
-
 <body>
 	<header>
-
 		<div id="content">
 			<canvas id="sketch_grid" data-processing-sources="Sketch_for_Site.pde"></canvas>
 		</div>
-
 		<ul class="logoName" id="Name">
 			<img src="imForSite/logo.png" alt="MY V Bike Rental logo">
 		</ul>
-
 		<a name="top"></a>
-
 		<ul class="topnav" id="myTopnav">
 			<li><a href="" class="closebtn">&times;</a></li>
 			<li><a href="index.html" id="home"><strong>Home</strong></a></li>
@@ -87,14 +71,10 @@ else{
 			<li><a class="active" href="reservation.php" id="reservation"><strong>Rent</strong></a></li>
 			<li><a href="contact.php" id="contacts"><strong>Contact</strong></a></li>
 		</ul>
-
 		<a href="" class="toggle">
 			<img src="imForSite/glyphicons-114-justify.png" alt="glyphicon menu">
 		</a>
-
-
 	</header>
-
 	<section class="main">
 		<div class="container-fluid text-center">
 			<div class="col-sm-2 left">
@@ -102,7 +82,6 @@ else{
 					<p><span class="glyphicon glyphicon-menu-up"></span> </p>
 					<p><span class="glyphicon glyphicon-menu-up"></span> </p>
 				</a>
-
 				<div id="socialRowSide">
 					<ul id="socialMediaSide">
 						<li id="facebookSide">
@@ -133,17 +112,32 @@ else{
 					</ul>
 				</div>
 			</div>
-
-
-
 			<div class="col-sm-8 text-left">
 				<?php
 				include 'forecastData.php';
+				$response = file_get_contents("forecastdata.json");
+				$data = json_decode($response);
+				$weatherdata = $data->data;
+				date('m/d/y', strtotime($weatherdata[0]->valid_date));
+				$discountListFor15Days = array();
+				for($a=0; $a<15; $a++){
+					$code = $weatherdata[$a]->weather->code;
+					$date = date('m/d/Y', strtotime($weatherdata[$a]->valid_date));
+					$discount;
+					// sunny day: dicount rate = 0
+					if($code==700 || $code ==711 || $code ==721 || $code == 731 || $code ==741 || 
+					$code ==751 || $code ==800 || $code ==801 || $code ==803 || $code ==804){
+						$discount = 1;
+					} else{
+						// rainny day: dicount rate = 15%
+						$discount = 0.5;
+					}
+					// store in multi array [date][dicount rate]
+					$discountListFor15Days[$a] = array($date,$discount);
+				}
 				?>
 				<h3>Please fill in this form</h3>
-
 				<form method="post" action="reservation.php">
-
 					<div class="row selection">
 						<div class="col-sm-3 selector">
 							<!--By default, the first item in the drop-down list is selected.
@@ -152,63 +146,43 @@ else{
 							<label for="bike_id">Choose a bike</label>
 							<select class="form-control" id="bike_id" name="bike">
 								<?php
-
 								$query = "SELECT * FROM `bikes`";
 								$result1 = mysqli_query($connect, $query);
 								while ($row1 = mysqli_fetch_array($result1)) :; ?>
-
 									<option value="<?php echo $row1[0]; ?>"><?php echo $row1[1]; ?></option>
-
 								<?php endwhile; ?>
-
 							</select>
 						</div>
-
 						<div class="col-sm-9 dates">
 							<div class="col-sm-4" id="pick-up-date">
 								<label for="date-input" class="col-sm-3 col-form-label">Pick up date</label>
 								<input class="form-control" type="text" name="startDate" id="setDatePick">
 								<!--!!!!!!1��������� ������� ���������� ���!!!-->
 							</div>
-
 							<div class="col-sm-1">
 							</div>
-
-
 							<div class="col-sm-4" id="pick-up-time">
 								<label for="time-input" class="col-sm-4 col-form-label">Time</label>
-
 								<input class="form-control" type="time" name="startTime" id="setTimePick">
-
 							</div>
 						</div>
-
 					</div>
-
-
-
 					<div class="row selection">
 						<div class="col-sm-3">
 						</div>
-
 						<div class="col-sm-9 dates">
 							<div class="col-sm-4" id="drop-off-date">
 								<label for="date-input" class="col-sm-3 col-form-label">Drop off date</label>
 								<input class="form-control" type="text" name="endDate" id="setDateDrop">
 							</div>
-
 							<div class="col-sm-1">
 							</div>
-
-
 							<div class="col-sm-4" id="drop-off-time">
 								<label for="example-time-input" class="col-sm-4 col-form-label">Time</label>
 								<input class="form-control" type="time" name="endTime" id="setTimeDrop">
 							</div>
-
 						</div>
 					</div>
-
 					<script>
 						$('#setDatePick').datepicker({
 							minDate: 0
@@ -216,17 +190,14 @@ else{
 						$('#setDateDrop').datepicker({
 							minDate: 0
 						});
-
 						$('#setDateDrop').change(function() {
 							var diff = $('#setDatePick').datepicker("getDate") - $('#setDateDrop').datepicker("getDate");
 							$('#diff').text(diff / (1000 * 60 * 60 * 24) * -1 + 1);
 						});
 					</script>
-
 					<div class="row" id="pricing">
 						<div class="col-sm-9" id="invisible">
 						</div>
-
 						<div class="col-sm-3">
 							<label class="col-sm-12">
 								<h4>Total Day(s)</h4>
@@ -236,21 +207,17 @@ else{
 							</div>
 						</div>
 					</div>
-
 					<!-- <label class="col-sm-12"><h4>bike_id_text</h4></label>
 							<div class="col-sm-12 price"> 
 								<h4 id='bike_id_text'></h4>
 							</div> -->
-
 					<div id="result"></div>
-
+					
 					<script>
-
 						// $('#bike_id_text').text($('#bike_id').val());
 						// $('#bike_id').change(function () {
 						// 	$('#bike_id_text').text($('#bike_id').val());
 						// });
-
 						var bikeID = $('#bike_id').val();
 						var diff = $('#diff').val();
 						$('#bike_id').change(function () {
@@ -265,7 +232,6 @@ else{
 								}
 							});
 						});
-
 						$.ajax({
 							url: 'reservationPrice.php',
 							type: 'POST',
@@ -275,10 +241,7 @@ else{
 								$('#price_per_unit').html(data);
 							}
 						});
-
 					</script>
-
-
 					<div class="row" id="pricing">
 						<div class="col-sm-9" id="invisible">
 						</div>
@@ -290,41 +253,73 @@ else{
 							</div>
 						</div>
 					</div>
-
+					
 					<script>
 						
-
 						$('body').on('DOMSubtreeModified', '#diff', function(){
 							console.log('changed');
+							$('#total_price_after_discount').text("");
 							
 							var diff = $('#setDatePick').datepicker("getDate") - $('#setDateDrop').datepicker("getDate");
 							var diff2 = diff / (1000 * 60 * 60 * 24) * -1 + 1;
 							console.log(diff2);
-
-							var target = document.querySelector('#price_per_unit')
+							// var target = document.querySelector('#price_per_unit')
 							// create an observer instance
-							var observer = new MutationObserver(function(mutations) {
-								console.log(target.innerText);   
-							});
+							// var observer = new MutationObserver(function(mutations) {
+							// 	console.log(target.innerText);   
+							// });
 							
-							var price_per_unit = $('#price_per_unit').html(data);
+							var price_per_unit = $('#price_per_unit').html();
 							console.log(price_per_unit);
-
 							var total_price = diff2 * price_per_unit;
 							$('#total_price').text(total_price);
-
+							
+							// Discount Price
+							var inputDate = $('#setDatePick').datepicker({ dateFormat: "dd-mm-yy" }).val();
+							var discountList = <?php echo json_encode($discountListFor15Days);?>;
+							// Match the date pick and the date in API
+							var count=-1;
+							for(var a=0; a<discountList.length; a++){
+								if(inputDate == discountList[a][0]){
+									// pick day starts at index a
+									count = a;
+								}
+							}
+							console.log("Count: "+count);
+							console.log(inputDate);
+							console.log(discountList[0][0]);
+							console.log(diff2+count);
+							// cal price after discount
+							// discount showed if user choose within 16 days
+							var totalprice_afterdiscount=0; 
+							// if count = -1: 
+							if(count>=0){
+								// Condition 1: StartDate within forecast and Dropdate within forecast
+								if((diff2+count)<=16){
+									for(var i=count; i<diff2+count; i++){
+										totalprice_afterdiscount = totalprice_afterdiscount + (price_per_unit * parseFloat(discountList[i][1]));
+									}
+								}
+								// Condition 2: StartDate within forecast and Dropdate later than forecast 
+								else {
+									// Part 1: Within forecast
+									var nonForecastDay = diff2-15+count;
+									for(var i=count; i<16; i++){
+										totalprice_afterdiscount = totalprice_afterdiscount + (price_per_unit * parseFloat(discountList[i][1]));
+									}
+									// Part 2: After forecast
+									totalprice_afterdiscount = totalprice_afterdiscount + (price_per_unit * nonForecastDay);
+								}
+								// $('#total_price').text();
+								// $('#stroke').text(total_price);
+								$('#total_price_after_discount').text(totalprice_afterdiscount);
+							}
 							
 						});
 						
 						
 						
-
-
-
-
-
 					</script>
-
 					<div class="row" id="pricing">
 						<div class="col-sm-9" id="invisible">
 						</div>
@@ -332,12 +327,21 @@ else{
 						<div class="col-sm-3" 	>						
 							<label class="col-sm-12"><h4>Total Price (RM)</h4></label>
 							<div class="col-sm-12 price"> 
-								<h4 id='total_price'></h4>
+							<h4 id='total_price'><del id='stroke'></del></h4>
 							</div>
 						</div>
 					</div>
-
-
+					<div class="row" id="pricing">
+						<div class="col-sm-9" id="invisible">
+						</div>
+						
+						<div class="col-sm-3" 	>						
+							<label class="col-sm-12"><h4>Total Price After Discount(RM)</h4></label>
+							<div class="col-sm-12 price"> 
+								<h4 id='total_price_after_discount'></h4>
+							</div>
+						</div>
+					</div>
 					<div class="row col-sm-12 comment">	
 						<div class="row" id="comment">
 							<label for="message" class="col-sm-12 col-form-label" id="message"> Comments</label>
@@ -346,27 +350,17 @@ else{
 							</div>
 						</div>
 					</div>
-
 					<?php
 						echo $result;
 					?>
-
-
 					<div class="col-sm-12 checkbox">
-
 						<input type="checkbox" id="c1" name="cc" />
 						<label for="c1"><span></span><a id="contract">I accept the conditions.</a></label>
 					</div>
-
-
-
-
 					<!-- The Modal -->
 					<div id="myModal" class="modal">
-
 						<!-- Modal content -->
 						<div class="modal-content">
-
 							<div class="modal-header">
 								<span class="close">?</span>
 								<h2><strong>Contract</strong></h2>
@@ -379,42 +373,30 @@ else{
 								<p>MY V Bike Rental, acts as a go-between for you as a rent-a-bike company and the final customer,
 									according to the general conditions of contract and other appendixes, described in the documentation
 									given to the provider. </p>
-
 								<p>The terms and contracting general conditions described in MY V Bike Rental, as they are of a g
 									eneral nature and are complementary with the leaseholder�s terms and conditions and subjected to
 									any changes in the legislation of the country concern. MY V Bike Rental offers its clients and members
 									an offer of contract and reserve of renting motorbikes by means of on-line booking through which the
 									leaseholders offer their motorbikes with prices and availabilities.</p>
-
-
 								<p>When formalizing a reservation or buying any service through MY V Bike Rental.com you come into a direct
 									contract with MY V Bike Rental customers. From the moment the reservation is formalized, we act as mediators
 									between you and the customers giving them your details and sending them a confirmation e-mail, according to
 									the details provided by you as a provider in our intranet system.</p>
-
 								<p>Read carefully the exclusions, limitations and responsibilities of MY V Bike Rental.</p>
-
-
 								<p>2) Contract terms agreement:</p>
-
 								<p>Your reservation is subject to your agreement of our contract terms, our privacy policy and our destiny
 									leaseholder�s contract terms. If you don�t agree with our contract terms or have further questions about the
 									terms, please contact our customer care department.</p>
-
 								<p>3) Limited availability vehicles or under confirmation:</p>
-
 								<p>MY V Bike Rental, works to offer the same bike model and make asked for in the chosen time and the location,
 									although some models, due to their limited availability may not be available at the moment of booking. For limited
 									availability bike models, you will receive a confirmation email up to 3 workdays from the moment of reservation.
 									In case of no availability of the brand or model required, MY V Bike Rental will facility you a motorbike inside
 									the same category, in case that the category will be a lower category than the client have chosen, will be solved
 									with a proportional refund of the difference between both categories. </p>
-
 								<p>Important note: remember that your pre-reserve is not valid until it has been sent as �starter voucher� and
 									up to 72 hours from the moment of transaction.</p>
-
 								<p>4) Lack of precision or information mistakes:</p>
-
 								<p>MY V Bike Rental periodically reviews its business supplier�s information quality and reliability, although accurate
 									information related to prices, availability and rent particular conditions, are the leaseholder�s responsibility. That
 									keep their information updated trough an intranet connected to our website, therefore MY V Bike Rental can�t guarantee
@@ -425,26 +407,19 @@ else{
 								<p> this contract was taken from "http://www.rentalmotorbike.com/datos/datos" as a reference material for university project</p>
 							</div>
 						</div>
-
 					</div>
-
 					<div class="col-sm-12 submit">
 						<div id="sendButton">
 							<button type="submit" id="submit" name="add">Place order</button>
 						</div>
-
 					</div>
-
 				</form>
-
 				<div class="col-sm-2">
 				</div>
 			</div>
 		</div>
 	</section>
-
 	<footer class="container-fluid" id="foot">
-
 		<div class="col-sm-2">
 		</div>
 		<div class="col-sm-8 about">
@@ -462,7 +437,6 @@ else{
 				<h5><a id="Suzuki" href="http://www.suzuki-moto.com/" target="_blank">Suzuki</a></h5>
 				<h5><a id="Yamaha" href="https://www.yamahamotorsports.com/motorcycle" target="_blank">Yamaha</a></h5>
 			</div>
-
 			<div class="col-sm-4" id="contactInfo">
 				<h4><strong>MY V Bike Rental</strong></h4>
 				<h5><strong>Address:</strong> 20-250, I.Daszynskiego, 3a,</h5>
@@ -471,13 +445,10 @@ else{
 				<h5>12pm-6pm Sun </h5>
 				<h5><strong>E-mail:</strong> myvbikes@gmail.com</h5>
 				<h5><strong>Tel:</strong> +12345678</h5>
-
-
 			</div>
 		</div>
 		<div class="col-sm-2">
 		</div>
-
 		<div id="socialRow">
 			<ul id="socialMedia">
 				<li id="facebook">
@@ -505,7 +476,6 @@ else{
 						<img src="imForSite/twitter-logo.png" alt="twitter logo">
 					</a>
 				</li>
-
 			</ul>
 		</div>
 		<div id="rights">
@@ -515,8 +485,6 @@ else{
 			</a>
 		</div>
 	</footer>
-
-
 	<!-- <script type='text/javascript' src='animation.js'></script>
 				
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
