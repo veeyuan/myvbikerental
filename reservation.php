@@ -17,10 +17,10 @@ else{
     $endtDate  = strip_tags(trim($_POST['endDate']));
 	$startTime	= strip_tags(trim($_POST['startTime']));
     $endTime    = strip_tags(trim($_POST['endTime']));
-	//$totalPrice	= strip_tags(trim($_POST['totalPrice']));
+	$totalPrice	= strip_tags(trim($_POST['totalPrice']));
     $comments    = strip_tags(trim($_POST['Coments']));
 	$sql = "INSERT INTO reservations(userID,bikeID,startDate,endDate,startTime,endTime,totalPrice,Comments, status) 
-                VALUES ('$userID','$bikeID','$startDate','$endtDate','$startTime','$endTime','90','$comments', '3')";
+                VALUES ('$userID','$bikeID','$startDate','$endtDate','$startTime','$endTime','$totalPrice','$comments', '3')";
 	$qsql = mysqli_query($connect,$sql);
 	  
     
@@ -146,17 +146,18 @@ else{
 							<label for="bike_id">Choose a bike</label>
 							<select class="form-control" id="bike_id" name="bike">
 								<?php
-								$query = "SELECT * FROM `bikes`";
+								$query = "SELECT * FROM `models`";
 								$result1 = mysqli_query($connect, $query);
 								while ($row1 = mysqli_fetch_array($result1)) :; ?>
 									<option value="<?php echo $row1[0]; ?>"><?php echo $row1[1]; ?></option>
 								<?php endwhile; ?>
 							</select>
 						</div>
+
 						<div class="col-sm-9 dates">
 							<div class="col-sm-4" id="pick-up-date">
 								<label for="date-input" class="col-sm-3 col-form-label">Pick up date</label>
-								<input class="form-control" type="text" name="startDate" id="setDatePick">
+								<input class="form-control" type="text" name="startDate" id="setDatePick" >
 								<!--!!!!!!1��������� ������� ���������� ���!!!-->
 							</div>
 							<div class="col-sm-1">
@@ -207,17 +208,9 @@ else{
 							</div>
 						</div>
 					</div>
-					<!-- <label class="col-sm-12"><h4>bike_id_text</h4></label>
-							<div class="col-sm-12 price"> 
-								<h4 id='bike_id_text'></h4>
-							</div> -->
 					<div id="result"></div>
 					
 					<script>
-						// $('#bike_id_text').text($('#bike_id').val());
-						// $('#bike_id').change(function () {
-						// 	$('#bike_id_text').text($('#bike_id').val());
-						// });
 						var bikeID = $('#bike_id').val();
 						var diff = $('#diff').val();
 						$('#bike_id').change(function () {
@@ -242,6 +235,7 @@ else{
 							}
 						});
 					</script>
+
 					<div class="row" id="pricing">
 						<div class="col-sm-9" id="invisible">
 						</div>
@@ -312,7 +306,7 @@ else{
 								}
 								// $('#total_price').text();
 								// $('#stroke').text(total_price);
-								$('#total_price_after_discount').text(totalprice_afterdiscount);
+								$('#total_price_to_pay').val(totalprice_afterdiscount);
 							}
 							
 						});
@@ -324,10 +318,10 @@ else{
 						<div class="col-sm-9" id="invisible">
 						</div>
 						
-						<div class="col-sm-3" 	>						
+						<div class="col-sm-3">						
 							<label class="col-sm-12"><h4>Total Price (RM)</h4></label>
-							<div class="col-sm-12 price"> 
-							<h4 id='total_price'><del id='stroke'></del></h4>
+							<div class="col-sm-12 price">
+							<h4 id='total_price'></h4>
 							</div>
 						</div>
 					</div>
@@ -337,11 +331,12 @@ else{
 						
 						<div class="col-sm-3" 	>						
 							<label class="col-sm-12"><h4>Total Price After Discount(RM)</h4></label>
-							<div class="col-sm-12 price"> 
-								<h4 id='total_price_after_discount'></h4>
+							<div class="col-sm-12 price">
+							<input class="form-control" type="text" name="totalPrice" id="total_price_to_pay" readonly>
 							</div>
 						</div>
 					</div>
+
 					<div class="row col-sm-12 comment">	
 						<div class="row" id="comment">
 							<label for="message" class="col-sm-12 col-form-label" id="message"> Comments</label>
