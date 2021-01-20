@@ -11,7 +11,8 @@ $tim = date("H:i:s");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>MY V Bike Rental - Admin</title>
+    <title>MY V Bike Rental</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">    
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -22,6 +23,8 @@ $tim = date("H:i:s");
     <!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="assets/css/all-themes.css" rel="stylesheet" />
     <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script> 
 
 </head>
 
@@ -34,17 +37,18 @@ $tim = date("H:i:s");
     <nav class="navbar clearHeader">
         <div class="col-12">
             <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand"
-                    href="index.html">MY V Bike Rental</a> </div>
+                    href="index.html">MY V Bike Rental</a> 
+                </div>                
             <ul class="nav navbar-nav navbar-right">
                 <!-- Notifications -->
                 <li>
                     <a data-placement="bottom" title="Full Screen" href="logout.php"><i
                             class="zmdi zmdi-sign-in"></i></a>
-                </li>               
-
+                </li>
             </ul>
         </div>
     </nav>
+
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
