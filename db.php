@@ -1,9 +1,9 @@
 <?php
 $servername = "localhost";
 $name = 'bikerentalsystem';
-$username = "user1";
-$password = "user1abc";
-$connect = mysqli_connect($servername, $username, $password, "bikerentalsystem");
+$username = "root";
+$password = "";
+$connect = mysqli_connect($servername, $username, $password, "bikerentalsystem1");
 
 
 if(!$connect){
