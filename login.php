@@ -76,10 +76,6 @@ if(isset($_POST['submit']))
 					<input type="password" name="password" id="password" class="form-control"  placeholder="Password" /> </div>
                 </div>
                 <div>
-                    <div class="">
-                        <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                        <label for="rememberme">Remember Me</label>
-                    </div>
                     <div class="text-center">
 					<input type="submit" name="submit" id="submit" value="Login" class="btn btn-raised waves-effect g-bg-gy" /></div>
                     <div class="text-center"> <a href="forgot-password.html">Forgot Password?</a></div>

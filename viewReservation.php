@@ -51,7 +51,19 @@ include("db.php");
             
 			$sqlstat = "SELECT * FROM status WHERE statusID='$rs[status]'";
 			$qsqlstat= mysqli_query($connect,$sqlstat);
-			$rsstat = mysqli_fetch_array($qsqlstat);            
+      $rsstat = mysqli_fetch_array($qsqlstat);      
+      if(strtotime($rs['startDate']) < strtotime('now') && $rsstat['statusDescription'] == "Pending"){
+        echo"<script>console.log('done')</script>";
+        $rsstat['statusDescription'] = "Done";
+        $rs['status'] = 3;
+
+        $sql1 ="UPDATE reservations SET status= 3 WHERE reservationID='$rs[reservationID]'";
+        if($qsql1 = mysqli_query($connect,$sql1))
+        {
+
+        }          
+    }      
+      
         echo "<tr>
           <td>".$j."</td>		 
              <td>&nbsp;" . date("d-M-Y",strtotime($rs['startDate'])) . " <br>" . date("H:i A",strtotime($rs['startTime'])) . "</td> 
