@@ -14,13 +14,17 @@ else{
 	$userID  = $_SESSION['userID'];
 	$bikeID  = strip_tags(trim($_POST['bike']));
     $startDate  = strip_tags(trim($_POST['startDate']));
+	$time = strtotime($startDate);
+	$newformatstartDate = date('Y-m-d',$time);
     $endtDate  = strip_tags(trim($_POST['endDate']));
+	$time1 = strtotime($endtDate);
+	$newformatendDate = date('Y-m-d',$time1);
 	$startTime	= strip_tags(trim($_POST['startTime']));
     $endTime    = strip_tags(trim($_POST['endTime']));
 	$totalPrice	= strip_tags(trim($_POST['totalPrice']));
     $comments    = strip_tags(trim($_POST['Coments']));
 	$sql = "INSERT INTO reservations(userID,bikeID,startDate,endDate,startTime,endTime,totalPrice,Comments, status) 
-                VALUES ('$userID','$bikeID','$startDate','$endtDate','$startTime','$endTime','$totalPrice','$comments', '4')";
+                VALUES ('$userID','$bikeID','$newformatstartDate','$newformatendDate','$startTime','$endTime','$totalPrice','$comments', '4')";
 	$qsql = mysqli_query($connect,$sql);
 	  
     
@@ -199,6 +203,7 @@ else{
 							</div>
 						</div>
 					</div>
+					
 					<script>
 						$('#setDatePick').datepicker({
 							minDate: 0
