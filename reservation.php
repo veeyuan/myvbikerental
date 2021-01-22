@@ -14,13 +14,17 @@ else{
 	$userID  = $_SESSION['userID'];
 	$bikeID  = strip_tags(trim($_POST['bike']));
     $startDate  = strip_tags(trim($_POST['startDate']));
+	$time = strtotime($startDate);
+	$newformatstartDate = date('Y-m-d',$time);
     $endtDate  = strip_tags(trim($_POST['endDate']));
+	$time1 = strtotime($endtDate);
+	$newformatendDate = date('Y-m-d',$time1);
 	$startTime	= strip_tags(trim($_POST['startTime']));
     $endTime    = strip_tags(trim($_POST['endTime']));
 	$totalPrice	= strip_tags(trim($_POST['totalPrice']));
     $comments    = strip_tags(trim($_POST['Coments']));
 	$sql = "INSERT INTO reservations(userID,bikeID,startDate,endDate,startTime,endTime,totalPrice,Comments, status) 
-                VALUES ('$userID','$bikeID','$startDate','$endtDate','$startTime','$endTime','$totalPrice','$comments', '3')";
+                VALUES ('$userID','$bikeID','$newformatstartDate','$newformatendDate','$startTime','$endTime','$totalPrice','$comments', '4')";
 	$qsql = mysqli_query($connect,$sql);
 	  
     
@@ -146,11 +150,26 @@ else{
 							<label for="bike_id">Choose a bike</label>
 							<select class="form-control" id="bike_id" name="bike">
 								<?php
-								$query = "SELECT * FROM `models`";
+
+								//retrieve all model
+								
+
+								$query1 = "SELECT * FROM `bikes`";
+								$result2 = mysqli_query($connect, $query1);
+								
+								while ($row2 = mysqli_fetch_array($result2)){
+								if ($row2[3] == '1'){
+								$model = $row2[1];
+								
+								$query = "SELECT * FROM `models` WHERE brand = '$model'";
 								$result1 = mysqli_query($connect, $query);
-								while ($row1 = mysqli_fetch_array($result1)) :; ?>
-									<option value="<?php echo $row1[0]; ?>"><?php echo $row1[1]; ?></option>
-								<?php endwhile; ?>
+
+								while ($row1 = mysqli_fetch_array($result1)){
+								echo "<option value=", $row1[0], ">" , $row1['model'], "</option>" ;
+								}
+								}}
+								 ?>
+								
 							</select>
 						</div>
 
@@ -184,6 +203,7 @@ else{
 							</div>
 						</div>
 					</div>
+					
 					<script>
 						$('#setDatePick').datepicker({
 							minDate: 0
