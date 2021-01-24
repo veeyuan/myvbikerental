@@ -94,6 +94,7 @@ $tim = date("H:i:s");
                         <ul class="ml-menu">
                             <li><a href="addBikes.php">Add Bikes</a></li>
                             <li><a href="viewBikes.php">View Bikes</a></li>
+                            <li><a href="viewModels.php">View Models</a></li>
                         </ul>
                     </li> 
                 </ul>

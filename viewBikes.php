@@ -14,7 +14,7 @@ if(isset($_GET['delid']))
 
 <div class="container-fluid">
   <div class="block-header">
-    View Bikes Record
+    View Bikes
   </div>
 </div>
 <div class="card">
@@ -23,10 +23,11 @@ if(isset($_GET['delid']))
 
     <thead>
       <tr>
-        <td width="12%" height="40">Model</td>
-        <td width="11%">Plate Number</td>
-        <td width="12%">Status</td>
-        <td width="10%">Action</td>
+        <td>ID</td>
+        <td>Model</td>
+        <td>Plate Number</td>
+        <td>Status</td>
+        <td>Action</td>
       </tr>
     </thead>
     <tbody>
@@ -35,33 +36,25 @@ if(isset($_GET['delid']))
      $qsql = mysqli_query($connect,$sql);
      while($rs = mysqli_fetch_array($qsql))
      {
-         $status = "";
-         if($rs['status'] == 1){
-            $status = "Available";
-         }
-         else if($rs['status'] == 2){
-            $status = "Checked Out";
-         }         
-		else if($rs['status'] == 3){
-            $status = "Not Available";
-         }         
-		 else if($rs['status'] == 4){
-            $status = "On Hold";
-         }
-		 
-		$model = "";
-         if($rs['model'] == 1){
-            $model = "Model 1";
-         }
-         else if($rs['model'] == 2){
-            $model = "Model 2";
-         } 
+			$sqlpat = "SELECT * FROM bikes_status WHERE ID='$rs[status]'";
+			$qsqlpat = mysqli_query($connect,$sqlpat);
+      $rspat = mysqli_fetch_array($qsqlpat);             
+      $status = $rspat['status'];
+
+			$sqlmodel = "SELECT * FROM models WHERE ID='$rs[model]'";
+			$qsqlmodel = mysqli_query($connect,$sqlmodel);
+      $rsmodel = mysqli_fetch_array($qsqlmodel);             
+      $model = $rsmodel['model'];      
+
       echo "<tr>
+      <td>$rs[ID]</td>
       <td>$model</td>
       <td>$rs[plate_no]</td>
       <td>$status</td>
       <td style='min-width: 180px'>
-      <a href='addBikes.php?editid=$rs[adminID]' class='btn btn-raised g-bg-cyan'>Edit</a> <a href='viewBikes.php?delid=$rs[ID]' class='btn btn-raised g-bg-blush2'>Delete</a> </td>
+      <a href='editBikes.php?editid=$rs[ID]' class='btn btn-raised g-bg-cyan'>Edit</a>
+      <a class='btn btn-raised g-bg-blush2' onClick=\"javascript: return confirm('Please confirm deletion');\" href='viewBikes.php?delid=$rs[ID]'>Delete</a>        
+      </td>
       </tr>";
     }
     ?>
