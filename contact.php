@@ -131,6 +131,8 @@ function test_input($data) {
 					<li><a href="price.html" id="price"><strong>Prices</strong></a></li>
 					<li><a href="reservation.php" id="reservation"><strong>Rent</strong></a></li>
 					<li><a class="active" href="contact.php" id="contacts"><strong>Contact</strong></a></li>
+					<li><a href="login.php" id="login"><strong>Login</strong></a></li>
+            		<li><a href="loginAdmin.php" id="loginAdmin"><strong>LoginAdmin</strong></a></li>					
 				</ul>
 				
 				<a href="" class="toggle" >
