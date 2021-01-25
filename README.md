@@ -3,23 +3,32 @@
 Service to rent bikes developed with HTML, CSS, JavaScript, PHP, SQL.
 You can visit it by clicking [here](http://pydega.biz.ht/)
 
+### Database
+
+ERD Diagram
+10 Tables
+![ERD Diagram](lucidchart/bikerentalsystem.png)
+
 ### page path
+
 ```
-ecocanasports
-└── rent
-    └── product-list
-        └── product-detail
-├── buy
-├── event
-├── blog
-├── about-us
-├── contact-us
-├── students-rental
-├── corporate-rental
-└── account
+myvbikerental
+└── rent (rent/)
+    └── product-list (rent/index.php)
+        └── product-detail (rent/reservation.php)
+├── about-us (index.php)
+├── contact-us (contact.php)
+└── account (account/)
     ├── login
     └── register
     └── ...
+```
+
+### captcha
+
+```
+xampp/php/php.ini
+extension=gd2
 ```
 
 ### CONTACT

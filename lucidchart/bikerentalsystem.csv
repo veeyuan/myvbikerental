@@ -1,0 +1,400 @@
+"dbms","TABLE_SCHEMA","TABLE_NAME","COLUMN_NAME","ORDINAL_POSITION","DATA_TYPE","CHARACTER_MAXIMUM_LENGTH","CONSTRAINT_TYPE","REFERENCED_TABLE_SCHEMA","REFERENCED_TABLE_NAME","REFERENCED_COLUMN_NAME"
+"mysql","bakkerij","bestellingen","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bakkerij","bestellingen","userid","2","int",NULL,"FOREIGN KEY","bakkerij","users","id"
+"mysql","bakkerij","bestelregels","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bakkerij","bestelregels","bestellingid","2","int",NULL,"FOREIGN KEY","bakkerij","bestellingen","id"
+"mysql","bakkerij","bestelregels","productid","3","int",NULL,"FOREIGN KEY","bakkerij","producten","id"
+"mysql","bakkerij","producten","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bakkerij","users","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","admin","adminID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","admin","statusID","5","int",NULL,"FOREIGN KEY","bikerentalsystem","status","statusID"
+"mysql","bikerentalsystem","bikes","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","bikes","model","2","int",NULL,"FOREIGN KEY","bikerentalsystem","models","ID"
+"mysql","bikerentalsystem","bikes","status","4","int",NULL,"FOREIGN KEY","bikerentalsystem","bikes_status","ID"
+"mysql","bikerentalsystem","bikes_status","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","bikes_type","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","bikes_type","bike","2","int",NULL,"FOREIGN KEY","bikerentalsystem","bikes","ID"
+"mysql","bikerentalsystem","bikes_type","type","3","int",NULL,"FOREIGN KEY","bikerentalsystem","types","ID"
+"mysql","bikerentalsystem","brands","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","models","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","models","brand","4","int",NULL,"FOREIGN KEY","bikerentalsystem","brands","ID"
+"mysql","bikerentalsystem","reservations","reservationID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","bikeID","3","int",NULL,"FOREIGN KEY","bikerentalsystem","bikes","ID"
+"mysql","bikerentalsystem","reservations","status","10","int",NULL,"FOREIGN KEY","bikerentalsystem","status","statusID"
+"mysql","bikerentalsystem","reservations","userID","2","int",NULL,"FOREIGN KEY","bikerentalsystem","users","userID"
+"mysql","bikerentalsystem","reservations","userID","2","int",NULL,"FOREIGN KEY","bikerentalsystem","users","userID"
+"mysql","bikerentalsystem","status","statusID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","types","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","users","userID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bikerentalsystem","users","statusID","7","int",NULL,"FOREIGN KEY","bikerentalsystem","status","statusID"
+"mysql","dbcnp","admininfo","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","dbcnp","tblcnp","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","dbcnp","tblorders","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","ecommerce","orderdetails","detailID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","ecommerce","orders","orderID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","ecommerce","payments","paymentID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","ecommerce","products","productID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","ecommerce","product_categories","categoryID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","ecommerce","users","userID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","admin","adminid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","admin","adminname","2","varchar","25","UNIQUE",NULL,NULL,NULL
+"mysql","hms","appointment","appointmentid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","bakkerij","bestellingen","datum","3","date",NULL,NULL,NULL,NULL,NULL
+"mysql","bakkerij","bestelregels","aantal","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","bakkerij","producten","naam","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","producten","prijs","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","naam","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","voornaam","3","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","straat","4","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","huisnummer","5","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","postcode","6","int",NULL,NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","woonplaats","7","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","emailadres","8","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","paswoord","9","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","blocked","10","tinyint",NULL,NULL,NULL,NULL,NULL
+"mysql","bakkerij","users","admin","11","tinyint",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","admin","username","2","varchar","25",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","admin","password","3","varchar","25",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","admin","email","4","varchar","100",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","bikes","plate_no","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","bikes_status","status","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","bikes_status","description","3","text","65535",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","brands","brand","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","model","2","varchar","256",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","product_code","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","year_of_production","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","engine_volume","6","decimal",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","horsepower","7","decimal",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","fuel_consumption","8","decimal",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","price","9","decimal",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","models","img","10","varchar","128",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","startDate","4","date",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","endDate","5","date",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","startTime","6","time",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","endTime","7","time",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","totalPrice","8","double",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","reservations","comments","9","varchar","255",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","status","statusDescription","2","varchar","10",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","types","type","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","users","username","2","varchar","25",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","users","password","3","varchar","25",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","users","email","4","varchar","100",NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","users","mobileNo","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","bikerentalsystem","users","address","6","varchar","255",NULL,NULL,NULL,NULL
+"mysql","dbcnp","admininfo","name","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","admininfo","contact","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","admininfo","email","4","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","admininfo","username","5","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","admininfo","password","6","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblcnp","name","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblcnp","prize","3","float",NULL,NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblcnp","description","4","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblcnp","image","5","varchar","250",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblcnp","status","6","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","cname","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","address","3","varchar","100",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","contact","4","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","cnpoid","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","oqty","6","int",NULL,NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","ostatus","7","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","timestamp","8","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","otype","9","varchar","50",NULL,NULL,NULL,NULL
+"mysql","dbcnp","tblorders","datepickup","10","date",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orderdetails","detailOrderID","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orderdetails","detailProductID","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orders","orderUserID","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orders","orderPaymentID","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orders","date","4","date",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orders","status","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","orders","total","6","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","payments","paymentName","2","varchar","20",NULL,NULL,NULL,NULL
+"mysql","ecommerce","payments","paymentCardNo","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","payments","paymentCVV","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","products","productCategoryID","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","products","productName","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","ecommerce","products","productImage","4","varchar","200",NULL,NULL,NULL,NULL
+"mysql","ecommerce","products","productShortDesc","5","varchar","150",NULL,NULL,NULL,NULL
+"mysql","ecommerce","products","productLongDesc","6","varchar","200",NULL,NULL,NULL,NULL
+"mysql","ecommerce","products","productPrice","7","int",NULL,NULL,NULL,NULL,NULL
+"mysql","ecommerce","product_categories","categoryName","2","varchar","20",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userEmail","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userPassword","3","varchar","255",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userFirstName","4","varchar","20",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userLastName","5","varchar","20",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userGender","6","varchar","5",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userPhone","7","varchar","12",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userCity","8","varchar","20",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userAddress","9","varchar","50",NULL,NULL,NULL,NULL
+"mysql","ecommerce","users","userStatus","10","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","admin","loginid","3","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","admin","password","4","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","admin","status","5","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","admin","usertype","6","varchar","30",NULL,NULL,NULL,NULL
+"mysql","hms","appointment","appointmenttype","2","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","billing","billingid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","billing_records","billingservice_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","department","departmentid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","doctor","doctorid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","doctor_timings","doctor_timings_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","medicine","medicineid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","orders","orderid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","patient","patientid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","payment","paymentid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","prescription","prescriptionid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","prescription_records","prescription_record_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","room","roomid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","service_type","service_type_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","treatment","treatmentid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","treatment_records","treatment_records_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","user","userid","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","motobike","bikes","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","hms","appointment","patientid","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","appointment","roomid","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","appointment","departmentid","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","appointment","appointmentdate","6","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","appointment","appointmenttime","7","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","appointment","doctorid","8","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","appointment","status","9","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","appointment","app_reason","10","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","billing","patientid","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","appointmentid","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","billingdate","4","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","billingtime","5","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","discount","6","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","taxamount","7","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","discountreason","8","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","billing","discharge_time","9","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing","discharge_date","10","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing_records","billingid","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing_records","bill_type_id","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing_records","bill_type","4","varchar","250",NULL,NULL,NULL,NULL
+"mysql","hms","billing_records","bill_amount","5","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing_records","bill_date","6","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","billing_records","status","7","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","department","departmentname","2","varchar","100",NULL,NULL,NULL,NULL
+"mysql","hms","department","description","3","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","department","status","4","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","doctorname","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","mobileno","3","varchar","15",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","departmentid","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","doctor","loginid","5","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","password","6","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","status","7","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","education","8","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","doctor","experience","9","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","doctor","consultancy_charge","10","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","doctor_timings","doctorid","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","doctor_timings","start_time","3","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","doctor_timings","end_time","4","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","doctor_timings","available_day","5","varchar","15",NULL,NULL,NULL,NULL
+"mysql","hms","doctor_timings","status","6","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","medicine","medicinename","2","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","medicine","medicinecost","3","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","medicine","description","4","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","medicine","status","5","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","orders","patientid","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","orders","doctorid","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","orders","prescriptionid","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","orders","orderdate","5","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","orders","deliverydate","6","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","orders","address","7","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","orders","mobileno","8","varchar","15",NULL,NULL,NULL,NULL
+"mysql","hms","orders","note","9","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","orders","status","10","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","orders","payment_type","11","varchar","20",NULL,NULL,NULL,NULL
+"mysql","hms","orders","card_no","12","varchar","20",NULL,NULL,NULL,NULL
+"mysql","hms","orders","cvv_no","13","varchar","5",NULL,NULL,NULL,NULL
+"mysql","hms","orders","expdate","14","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","orders","card_holder","15","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","patient","patientname","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","patient","admissiondate","3","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","patient","admissiontime","4","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","patient","address","5","varchar","250",NULL,NULL,NULL,NULL
+"mysql","hms","patient","mobileno","6","varchar","15",NULL,NULL,NULL,NULL
+"mysql","hms","patient","city","7","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","patient","pincode","8","varchar","20",NULL,NULL,NULL,NULL
+"mysql","hms","patient","loginid","9","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","patient","password","10","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","patient","bloodgroup","11","varchar","20",NULL,NULL,NULL,NULL
+"mysql","hms","patient","gender","12","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","patient","dob","13","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","patient","status","14","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","payment","patientid","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","appointmentid","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","paiddate","4","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","paidtime","5","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","paidamount","6","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","status","7","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","payment","cardholder","8","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","payment","cardnumber","9","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","cvvno","10","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","payment","expdate","11","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription","treatment_records_id","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription","doctorid","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription","patientid","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription","delivery_type","5","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","prescription","delivery_id","6","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription","prescriptiondate","7","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription","status","8","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","prescription","appointmentid","9","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription_records","prescription_id","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription_records","medicine_name","3","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","prescription_records","cost","4","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription_records","unit","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","prescription_records","dosage","6","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","prescription_records","status","7","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","room","roomtype","2","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","room","roomno","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","room","noofbeds","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","room","room_tariff","5","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","room","status","6","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","service_type","service_type","2","varchar","100",NULL,NULL,NULL,NULL
+"mysql","hms","service_type","servicecharge","3","float",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","service_type","description","4","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","service_type","status","5","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","treatment","treatmenttype","2","varchar","25",NULL,NULL,NULL,NULL
+"mysql","hms","treatment","treatment_cost","3","decimal",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment","note","4","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","treatment","status","5","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","treatmentid","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","appointmentid","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","patientid","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","doctorid","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","treatment_description","6","text","65535",NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","uploads","7","varchar","100",NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","treatment_date","8","date",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","treatment_time","9","time",NULL,NULL,NULL,NULL,NULL
+"mysql","hms","treatment_records","status","10","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","user","loginname","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","user","password","3","varchar","10",NULL,NULL,NULL,NULL
+"mysql","hms","user","patientname","4","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","user","mobileno","5","varchar","15",NULL,NULL,NULL,NULL
+"mysql","hms","user","email","6","varchar","50",NULL,NULL,NULL,NULL
+"mysql","hms","user","createddateandtime","7","datetime",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","contact_us","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","motobike","reservation","ID Bike","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","motobike","user","ID","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__bookmark","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","db_name","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_name","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","db_name","2","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","table_name","3","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","column_name","4","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__designer_settings","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__export_templates","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__export_templates","username","2","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__export_templates","export_type","3","varchar","10","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__export_templates","template_name","4","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__favorite","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__history","id","1","bigint",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__navigationhiding","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__navigationhiding","item_name","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__navigationhiding","item_type","3","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__navigationhiding","db_name","4","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__navigationhiding","table_name","5","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__pdf_pages","page_nr","2","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__recent","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__relation","master_db","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__relation","master_table","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__relation","master_field","3","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__savedsearches","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__savedsearches","username","2","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__savedsearches","db_name","3","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__savedsearches","search_name","4","varchar","64","UNIQUE",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_coords","db_name","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_coords","table_name","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_coords","pdf_page_number","3","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_info","db_name","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_info","table_name","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_uiprefs","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_uiprefs","db_name","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_uiprefs","table_name","3","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","db_name","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","table_name","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","version","3","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","motobike","bikes","Model","2","text","65535",NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Year of prodaction","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Engine Volume","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Hourse Power","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Rent START","6","date",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Rent END","7","date",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","In Stock","8","tinyint",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Fuel Consumption","9","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Price per day","10","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","bikes","Order ID","11","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","contact_us","first_name","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","contact_us","last_name","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","contact_us","email","4","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","contact_us","phone","5","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","contact_us","message","6","text","65535",NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","Name","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","SurName","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","Birdhday","4","date",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","Email","5","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","Phone","6","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","RentSTART","7","date",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","STARTTime","8","time",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","RentEND","9","date",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","ENDTime","10","time",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","reservation","Coments","11","text","65535",NULL,NULL,NULL,NULL
+"mysql","motobike","user","Name","2","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","SurName","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","Country","4","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","City","5","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","Street","6","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","Age","7","int",NULL,NULL,NULL,NULL,NULL
+"mysql","motobike","user","Phone Number","8","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","Email","9","varchar","50",NULL,NULL,NULL,NULL
+"mysql","motobike","user","Black List","10","tinyint",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__bookmark","dbase","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__bookmark","user","3","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__bookmark","label","4","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__bookmark","query","5","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_type","3","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_length","4","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_collation","5","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_isNull","6","tinyint",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_extra","7","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__central_columns","col_default","8","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","comment","5","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","mimetype","6","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","transformation","7","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","transformation_options","8","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","input_transformation","9","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__column_info","input_transformation_options","10","varchar","255",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__designer_settings","settings_data","2","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__export_templates","template_data","5","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__favorite","tables","2","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__history","username","2","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__history","db","3","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__history","table","4","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__history","timevalue","5","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__history","sqlquery","6","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__pdf_pages","db_name","1","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__pdf_pages","page_descr","3","varchar","50",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__recent","tables","2","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__relation","foreign_db","4","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__relation","foreign_table","5","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__relation","foreign_field","6","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__savedsearches","search_data","5","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_coords","x","4","float",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_coords","y","5","float",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_info","display_field","3","varchar","64",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_uiprefs","prefs","4","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__table_uiprefs","last_update","5","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","date_created","4","datetime",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","date_updated","5","datetime",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__userconfig","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__usergroups","usergroup","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__usergroups","tab","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__usergroups","allowed","3","enum","1","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__users","username","1","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__users","usergroup","2","varchar","64","PRIMARY KEY",NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","schema_snapshot","6","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","schema_sql","7","text","65535",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","data_sql","8","longtext","4294967295",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","tracking","9","set","188",NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__tracking","tracking_active","10","int",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__userconfig","timevalue","2","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","phpmyadmin","pma__userconfig","config_data","3","text","65535",NULL,NULL,NULL,NULL

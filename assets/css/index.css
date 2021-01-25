@@ -1,0 +1,48 @@
+#home-bg {
+    background-image: url("../img/bright.jpg");
+    height: 100%;
+    position: relative;
+    opacity: 0.65;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-bg-nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.img-bg-nav a {
+    color: #fff;
+}
+
+.img-bg-nav .navbar-toggler {
+    color: var(--sunshine, #000);
+}
+
+.img-bg-title {
+    background-color: var(--sunshine, #000);
+    color: var(--outerspace, #000);
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+    opacity: 1;
+}
+
+.bg-light {
+    background-color: var(--alabaster, #fff) !important;
+}
+
+.img-bg-caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}

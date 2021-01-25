@@ -1,0 +1,84 @@
+.form-group .required {
+    color: var(--coral, #000);
+    padding-left: 3px;
+}
+
+.col-form-label {
+    font-weight: 500;
+}
+
+.custom-form-control {
+    border: 1px solid rgba(50, 153, 187, .5);
+    border-radius: 0px;
+    padding: 0px 12px;
+    display: block;
+    width: 100%;
+    min-height: 34px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.custom-form-control:focus {
+    border-color: var(--sunshine, #fff);
+    box-shadow: 0 0 10px rgba(242, 183, 64, 0.4);
+    outline: none;
+}
+
+.custom-form-select {
+    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    appearance: none;
+}
+
+.custom-control-input-sunshine~.custom-control-label::before {
+    border-radius: 0 !important;
+    border: 1px solid rgba(50, 153, 187, .5);
+}
+
+.custom-control-input-sunshine:focus~.custom-control-label::before {
+    border-color: var(--sunshine, #000) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(242, 183, 64, 0.25) !important;
+}
+
+.custom-control-input-sunshine:checked~.custom-control-label::before {
+    border-color: var(--sunshine, #000) !important;
+    border-radius: 0 !important;
+    background-color: var(--sunshine, #000) !important;
+}
+
+.custom-control-input-sunshine:focus:not(:checked)~.custom-control-label::before {
+    border-color: var(--sunshine, #000) !important;
+    border-radius: 0 !important;
+}
+
+.custom-control-input-sunshine:not(:disabled):active~.custom-control-label::before {
+    background-color: rgba(242, 183, 64, 0.4) !important;
+    border-color: rgba(242, 183, 64, 0.4) !important;
+    border-radius: 0 !important;
+}
+
+.custom-textarea {
+    padding: .375rem .75rem;
+}
+
+.invalid {
+    color: var(--coral, #000);
+}
+
+.custom-range::-webkit-slider-thumb {
+    background: var(--sunshine, #000);
+}
+
+.custom-range::-moz-range-thumb {
+    background: var(--yellowochre, #000);
+}
+
+.custom-range::-ms-thumb {
+    background: var(--yellowochre, #000);
+}
