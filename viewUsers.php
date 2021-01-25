@@ -24,11 +24,12 @@ if(isset($_GET['delid']))
 
     <thead>
       <tr>
-        <td width="8%" height="40">Username</td>
-        <td width="9%">Email</td>
-        <td width="8%">Mobile Number</td>
-        <td width="12%">Address</td>
-		<td width="8%">Action</td>
+        <td>Username</td>
+        <td>Email</td>
+        <td>Mobile Number</td>
+        <td width="20%">Address</td>
+        <td width = "8%">Total Reservations</td>
+    <td width="15%">Action</td>    
       </tr>
     </thead>
     <tbody>
@@ -37,13 +38,20 @@ if(isset($_GET['delid']))
      $qsql = mysqli_query($connect,$sql);
      while($rs = mysqli_fetch_array($qsql))
      {
+			$sqlpat = "SELECT COUNT(*) AS totalReservations FROM reservations WHERE userID='$rs[userID]'";
+			$qsqlpat = mysqli_query($connect,$sqlpat);
+			$rspat = mysqli_fetch_array($qsqlpat);
+
       echo "<tr>
       <td>$rs[username]</td>
       <td>$rs[email]</td>
       <td>$rs[mobileNo]</td>
-	  <td>$rs[address]</td>
+    <td>$rs[address]</td>
+    <td>$rspat[totalReservations]</td>
       <td style='min-width: 180px'>
-      <a href='users.php?editid=$rs[userID]' class='btn btn-raised g-bg-cyan'>Edit</a> <a href='viewUsers.php?delid=$rs[userID]' class='btn btn-raised g-bg-blush2'>Delete</a> </td>
+      <a href='editUsers.php?editid=$rs[userID]' class='btn btn-raised g-bg-cyan'>Edit</a> 
+      <a class='btn btn-raised g-bg-blush2' onClick=\"javascript: return confirm('Please confirm deletion');\" href='viewUsers.php?delid=$rs[userID]'>Delete</a>      
+      </td>
       </tr>";
     }
     ?>

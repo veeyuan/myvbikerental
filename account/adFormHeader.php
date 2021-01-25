@@ -93,8 +93,10 @@ $tim = date("H:i:s");
                     <li><a href="javascript:void(0);" class="menu-toggle"><i
                                 class="zmdi zmdi-account-o"></i><span>Bikes</span> </a>
                         <ul class="ml-menu">
+
                             <li><a href="<?php echo $root; ?>account/addBikes.php">Add Bikes</a></li>
                             <li><a href="<?php echo $root; ?>account/viewBikes.php">View Bikes</a></li>
+
                         </ul>
                     </li> 
                 </ul>

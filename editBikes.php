@@ -1,5 +1,5 @@
 <?php
-include("adHeader.php");
+include("adFormHeader.php");
 include("db.php");
 if(isset($_POST['submit']))
 {
@@ -18,33 +18,18 @@ if(isset($_POST['submit']))
 			echo mysqli_error($connect);
 		}	
 	}
-	else
-	{
-		$sql ="INSERT INTO bikes(model,plate_no,status) values('$_POST[selectModel]','$_POST[plate_no]','$_POST[selectStatus]')";
-		if($qsql = mysqli_query($connect,$sql))
-		{
-			echo "<div class='alert alert-success'>
-			Bike Record Inserted successfully
-			</div>";
-		}
-		else
-		{
-			echo mysqli_error($connect);
-		}
-	}
 }
 if(isset($_GET['editid']))
 {
 	$sql="SELECT * FROM bikes WHERE ID='$_GET[editid]' ";
 	$qsql = mysqli_query($connect,$sql);
-	$rsedit = mysqli_fetch_array($qsql);
-	
+	$rsedit = mysqli_fetch_array($qsql);	
 }
 ?>
 
 <div class="container-fluid">
 	<div class="block-header">
-		<h2> Add Bikes </h2>
+		<h2> Edit Bike </h2>
 	</div>
 	<div class="row clearfix">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -63,10 +48,15 @@ if(isset($_GET['editid']))
 											$modelQuery ="SELECT * FROM models";  
 											$modelResult = mysqli_query($connect, $modelQuery); 
 											while($row = mysqli_fetch_array($modelResult))  
-											{  
-												echo '  
-													<option value ='.$row["ID"].'>'.$row["ID"].' - '.$row["model"].'</option>  
-												';  
+											{                                                                                               
+                                                if($row["ID"] == $rsedit["model"]){
+                                                    echo '  
+													<option value ='.$row["ID"].' selected>'.$row["ID"].' - '.$row["model"].'</option>  
+												';                                                      
+                                                }
+                                                else{
+												    echo '<option value ='.$row["ID"].'>'.$row["ID"].' - '.$row["model"].'</option>';  
+                                                }
 											}	
 										?>                                        
 									</select>
@@ -93,10 +83,15 @@ if(isset($_GET['editid']))
 											$statusQuery ="SELECT * FROM bikes_status";  
 											$statusResult = mysqli_query($connect, $statusQuery); 
 											while($row = mysqli_fetch_array($statusResult))  
-											{  
-												echo '  
-													<option value ='.$row["ID"].'>'.$row["ID"].' - '.$row["status"].'</option>  
-												';  
+											{                                                                                               
+                                                if($row["ID"] == $rsedit["status"]){
+                                                    echo '  
+													<option value ='.$row["ID"].' selected>'.$row["ID"].' - '.$row["status"].'</option>  
+												';                                                      
+                                                }
+                                                else{
+												    echo '<option value ='.$row["ID"].'>'.$row["ID"].' - '.$row["status"].'</option>';  
+                                                }
 											}								                        	
 										?>                                        
 									</select>
@@ -129,7 +124,7 @@ var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/; //Variable t
 
 function validateform()
 {
-	else if(document.frmbikes.selectModel.value == "" )
+	if(document.frmbikes.selectModel.value == "" )
 	{
 		alert("Kindly select the Model..");
 		document.frmbikes.selectModel.focus();
