@@ -1,5 +1,7 @@
 <?php
-include_once("db.php");                                     
+$root = "../";
+include_once($root . "db.php");
+                                 
 
 $var1 = 0;
 $var2 = 1;

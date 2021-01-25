@@ -1,25 +1,23 @@
 <?php
-include("adheader.php");
+$root = "../";
+include $root . 'db.php';
 
-include("db.php");
-if(isset($_POST['submit']))
-{
-	$sql = "UPDATE users SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND userID='$_SESSION[userID]'";
-	$qsql= mysqli_query($connect,$sql);
-	if(mysqli_affected_rows($connect) == 1)
-	{
-		echo "<div class='alert alert-success'>
+include $root . "account/adHeader.php";
+
+if (isset($_POST['submit'])) {
+    $sql = "UPDATE users SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND userID='$_SESSION[userID]'";
+    $qsql = mysqli_query($connect, $sql);
+    if (mysqli_affected_rows($connect) == 1) {
+        echo "<div class='alert alert-success'>
                             Password has been updated successfully
                         </div>
                         <script>alert('Password has been updated successfully');</script>";
-	}
-	else
-	{
-		echo "<div class='alert alert-danger'>
+    } else {
+        echo "<div class='alert alert-danger'>
                             Update Failed
                         </div>
-                       ";		
-	}
+                       ";
+    }
 }
 ?>
 
@@ -30,8 +28,7 @@ if(isset($_POST['submit']))
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-               <form method="post" action="" name="frmpatchange" onSubmit="return validateform()"
-                    style="padding: 10px">
+                <form method="post" action="" name="frmpatchange" onSubmit="return validateform()" style="padding: 10px">
                     <div class="form-group">
                         <label>Old Password</label>
                         <div class="form-line">
@@ -62,41 +59,29 @@ if(isset($_POST['submit']))
     </div>
     <div class="clear"></div>
 </div>
-</div> 
+</div>
 
-<?php
-include("adfooter.php");
-?>
+<?php include $root . "account/adfooter.php"; ?>
 <script type="application/javascript">
-function validateform()
-{
-	if(document.frmpatchange.oldpassword.value == "")
-	{
-		alert("Old password should not be empty..");
-		document.frmpatchange.oldpassword.focus();
-		return false;
-	}
-	else if(document.frmpatchange.newpassword.value == "")
-	{
-		alert("New Password should not be empty..");
-		document.frmpatchange.newpassword.focus();
-		return false;
-	}
-	else if(document.frmpatchange.newpassword.value.length < 6)
-	{
-		alert("New Password length should be more than 6 characters...");
-		document.frmpatchange.newpassword.focus();
-		return false;
-	}
-	else if(document.frmpatchange.newpassword.value != document.frmpatchange.password.value )
-	{
-		alert(" New Password and confirm password should be equal..");
-		document.frmpatchange.password.focus();
-		return false;
-	}
-	else
-	{
-		return true;
-	}
-}
+    function validateform() {
+        if (document.frmpatchange.oldpassword.value == "") {
+            alert("Old password should not be empty..");
+            document.frmpatchange.oldpassword.focus();
+            return false;
+        } else if (document.frmpatchange.newpassword.value == "") {
+            alert("New Password should not be empty..");
+            document.frmpatchange.newpassword.focus();
+            return false;
+        } else if (document.frmpatchange.newpassword.value.length < 6) {
+            alert("New Password length should be more than 6 characters...");
+            document.frmpatchange.newpassword.focus();
+            return false;
+        } else if (document.frmpatchange.newpassword.value != document.frmpatchange.password.value) {
+            alert(" New Password and confirm password should be equal..");
+            document.frmpatchange.password.focus();
+            return false;
+        } else {
+            return true;
+        }
+    }
 </script>
