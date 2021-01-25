@@ -1,6 +1,8 @@
 <?php
-include("adFormHeader.php");
-include("db.php");
+$root = "../";
+include $root . 'db.php';
+
+include $root . "account/adFormHeader.php";
 ?>
 <div class="container-fluid">
   <div class="block-header">
@@ -134,7 +136,4 @@ include("db.php");
     });
   });    
 </script>  
-
-<?php
-include("adFormFooter.php");
-?>
+<?php include $root . "account/adFormFooter.php"; ?>

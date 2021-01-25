@@ -30,3 +30,4 @@ if ($err) {
     // $cityname = $data->data;
     // echo $cityname[0]->valid_date;
 }
+?>
